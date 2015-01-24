@@ -89,7 +89,9 @@ package org.bigbluebutton.view.navigation.pages.login
 			{
 				// test-install server no longer works with 0.9 mobile client
 
-				//url = "bigbluebutton://test-install.blindsidenetworks.com/bigbluebutton/api/join?fullName=Air&meetingID=Demo+Meeting&password=ap&checksum=512620179852dadd6fe0665a48bcb852a3c0afac";
+//				url = "bigbluebutton://test-install.blindsidenetworks.com/bigbluebutton/api/join?fullName=Air&meetingID=Demo+Meeting&password=ap&checksum=5126http://bbb.17mian.cn:80/bigbluebutton/api/join?meetingID=Demo+Meeting&fullName=Android&redirectClient=false&password=ap&checksum=5ffce4cc12bdc350fd64cabd78220179852dadd6fe0665a48bcb852a3c0afac";
+				url = "http://bbb.17mian.cn:80/bigbluebutton/api/join?meetingID=Demo+Meeting&fullName=Android&redirectClient=false&password=ap&checksum=5ffce4cc12bdc350fd64cabd7820bab8b032dae3";
+//				url = "http://bbb.17mian.cn:80/bigbluebutton/api/join?meetingID=Demo+Meeting&fullName=Android&redirectClient=false&password=ap&checksum=5ffce4cc12bdc350fd64cabd7820bab8b032dae3";
 				//url = "bigbluebutton://lab1.mconf.org/bigbluebutton/api/join?fullName=Air+client&meetingID=Test+room+4&password=prof123&checksum=5805753edd08fbf9af50f9c28bb676c7e5241349"
 			}
 

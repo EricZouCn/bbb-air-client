@@ -11,6 +11,10 @@ package org.bigbluebutton.core
 		function get successConnected():ISignal
 		function set uri(uri:String):void
 		function get uri():String
+		function set meetingId(mid:String):void
+		function get meetingId():String
+		function set userId(uid:String):void
+		function get userId():String
 		function get connection():NetConnection
 		function get cameraPosition():String;
 		function set cameraPosition(position:String):void

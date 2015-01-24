@@ -91,6 +91,8 @@ package org.bigbluebutton.command
 			
 			// set up and connect the remaining connections
 			videoConnection.uri = userSession.config.getConfigFor("VideoConfModule").@uri + "/" + conferenceParameters.room;
+			videoConnection.meetingId = conferenceParameters.conference;
+			videoConnection.userId = conferenceParameters.internalUserID;
 			
 			//TODO see if videoConnection.successConnected is dispatched when it's connected properly
 			videoConnection.successConnected.add(successVideoConnected);
@@ -101,6 +103,7 @@ package org.bigbluebutton.command
 			userSession.videoConnection = videoConnection;
 			
 			voiceConnection.uri = userSession.config.getConfigFor("PhoneModule").@uri;
+			
 			userSession.voiceConnection = voiceConnection;
 			
 			deskshareConnection.applicationURI = userSession.config.getConfigFor("DeskShareModule").@uri;

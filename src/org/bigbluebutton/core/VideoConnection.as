@@ -26,6 +26,8 @@ package org.bigbluebutton.core
 		protected var _unsuccessConnected:ISignal = new Signal();
 		
 		protected var _applicationURI:String;
+		protected var _meetingId:String;
+		protected var _userId:String;
 		
 		private var _camera:Camera;
 		
@@ -77,12 +79,28 @@ package org.bigbluebutton.core
 			return _applicationURI;
 		}
 		
+		public function set meetingId(mid:String):void {
+			_meetingId = mid;
+		}
+		
+		public function get meetingId():String {
+			return _meetingId;
+		}
+		
+		public function set userId(uid:String):void {
+			_userId = uid;
+		}
+		
+		public function get userId():String {
+			return _userId;
+		}
+		
 		public function get connection():NetConnection {
 			return baseConnection.connection;
 		}
 		
 		public function connect():void {
-			baseConnection.connect(uri);
+			baseConnection.connect(uri, _meetingId, _userId);
 		}
 		
 		public function get cameraPosition():String
