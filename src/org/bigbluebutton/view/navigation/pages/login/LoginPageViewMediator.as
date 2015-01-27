@@ -3,12 +3,14 @@ package org.bigbluebutton.view.navigation.pages.login
 	import flash.desktop.NativeApplication;
 	import flash.events.InvokeEvent;
 	import flash.filesystem.File;
+	import flash.net.URLRequest;
 	import flash.system.Capabilities;
-
+	
 	import mx.core.FlexGlobals;
-
+	
 	import org.bigbluebutton.command.JoinMeetingSignal;
 	import org.bigbluebutton.core.ILoginService;
+	import org.bigbluebutton.core.util.URLFetcher;
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.IUserUISession;
 	import org.bigbluebutton.model.UserSession;
@@ -16,9 +18,9 @@ package org.bigbluebutton.view.navigation.pages.login
 	import org.bigbluebutton.view.navigation.IPagesNavigatorView;
 	import org.flexunit.internals.namespaces.classInternal;
 	import org.osmf.logging.Log;
-
+	
 	import robotlegs.bender.bundles.mvcs.Mediator;
-
+	
 	import spark.components.Application;
 
 	public class LoginPageViewMediator extends Mediator
@@ -83,17 +85,45 @@ package org.bigbluebutton.view.navigation.pages.login
 
 		public function onInvokeEvent(invocation:InvokeEvent):void 
 		{
-			var url:String = invocation.arguments.toString();
+			var createUrl:String = "http://bbb.17mian.cn:80/bigbluebutton/api/create?meetingID=Demo+Meeting&attendeePW=ap&moderatorPW=mp&welcome=Welcome+to+17mian+meeting%21&checksum=406f9df41be2309d9a79f7c990f54c2c52de0f3e";
+			var fetcher:URLFetcher = new URLFetcher();
+			fetcher.successSignal.add(onSuccess);
+			fetcher.unsuccessSignal.add(onUnsucess);
+			fetcher.fetch(createUrl);
+		}
+		
+		protected function onSuccess(data:Object, responseUrl:String, urlRequest:URLRequest):void {
+//			try {
+//				var xml:XML = new XML(data);
+//				if (xml.returncode == XML_RETURN_CODE_FAILED) {
+//					onUnsuccess(xml.messageKey);
+//					return;
+//				}
+//			} catch (e:Error) {
+//				switch(e.name)
+//				{
+//					case URL_REQUEST_ERROR_TYPE:
+//						onUnsuccess(URL_REQUEST_INVALID_URL_ERROR);
+//						break;
+//					default:
+//						onUnsuccess(URL_REQUEST_GENERIC_ERROR);
+//				}
+//				
+//				trace("The response is probably not a XML. " + e.message);
+//				return;
+//			}
+			
+//			var url:String = invocation.arguments.toString();
 
-			if(Capabilities.isDebugger)
-			{
+//			if(Capabilities.isDebugger)
+//			{
 				// test-install server no longer works with 0.9 mobile client
 
 //				url = "bigbluebutton://test-install.blindsidenetworks.com/bigbluebutton/api/join?fullName=Air&meetingID=Demo+Meeting&password=ap&checksum=5126http://bbb.17mian.cn:80/bigbluebutton/api/join?meetingID=Demo+Meeting&fullName=Android&redirectClient=false&password=ap&checksum=5ffce4cc12bdc350fd64cabd78220179852dadd6fe0665a48bcb852a3c0afac";
-				url = "http://bbb.17mian.cn:80/bigbluebutton/api/join?meetingID=Demo+Meeting&fullName=Android&redirectClient=false&password=ap&checksum=5ffce4cc12bdc350fd64cabd7820bab8b032dae3";
+			var url:String = "http://bbb.17mian.cn:80/bigbluebutton/api/join?meetingID=Demo+Meeting&fullName=Android&redirectClient=false&password=ap&checksum=5ffce4cc12bdc350fd64cabd7820bab8b032dae3";
 //				url = "http://bbb.17mian.cn:80/bigbluebutton/api/join?meetingID=Demo+Meeting&fullName=Android&redirectClient=false&password=ap&checksum=5ffce4cc12bdc350fd64cabd7820bab8b032dae3";
 				//url = "bigbluebutton://lab1.mconf.org/bigbluebutton/api/join?fullName=Air+client&meetingID=Test+room+4&password=prof123&checksum=5805753edd08fbf9af50f9c28bb676c7e5241349"
-			}
+//			}
 
 			if (url.lastIndexOf("://") != -1)
 			{
@@ -108,7 +138,7 @@ package org.bigbluebutton.view.navigation.pages.login
 
 			joinMeetingSignal.dispatch(url);
 		}
-
+		
 		/**
 		 * Replace the schema with "http"
 		 */ 
