@@ -85,7 +85,7 @@ package org.bigbluebutton.core
 			_conferenceParameters = confParams;
 			_username = encodeURIComponent(confParams.externUserID + "-bbbID-" + confParams.username);
 				
-			baseConnection.connect(_applicationURI, confParams.externUserID, _username);
+			baseConnection.connect(_applicationURI, confParams.room, confParams.externUserID, _username);
 		}
 		
 		public function disconnect(onUserCommand:Boolean):void {
