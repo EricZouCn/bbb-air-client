@@ -5,6 +5,7 @@ package org.bigbluebutton.view.navigation.pages.common
 	import flash.media.Video;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
+	import flash.geom.Matrix;
 	
 	import spark.components.Group;
 	
@@ -53,6 +54,8 @@ package org.bigbluebutton.view.navigation.pages.common
 			
 			video.smoothing = true;
 			video.attachNetStream(ns);
+			
+//			rotateVideo(90);
 			
 			ns.play(streamName);
 		}
@@ -161,7 +164,7 @@ package org.bigbluebutton.view.navigation.pages.common
 			}
 			
 			video.rotation = rotation;
-			this.stage.addChild(video);
+//			this.stage.addChild(video);
 		}
 		
 		private function onNetStatus(e:NetStatusEvent):void{

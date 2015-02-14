@@ -73,9 +73,11 @@ package org.bigbluebutton.view.navigation.pages.participants
 		private function userRemoved(userID:String):void
 		{
 			var user:User = dicUserIdtoUser[userID] as User;
-			var index:uint = dataProvider.getItemIndex(user);
-			dataProvider.removeItemAt(index);
-			dicUserIdtoUser[user.userID] = null;
+			var index:int = dataProvider.getItemIndex(user);
+			if(index >= 0) {
+				dataProvider.removeItemAt(index);
+				dicUserIdtoUser[user.userID] = null;
+			}
 			setPageTitle();
 		}
 		

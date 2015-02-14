@@ -15,6 +15,7 @@ package org.bigbluebutton.view.navigation.pages
 	import org.bigbluebutton.view.navigation.pages.selectparticipant.SelectParticipantView;
 	import org.bigbluebutton.view.navigation.pages.userdetails.UserDetaisView;
 	import org.bigbluebutton.view.navigation.pages.videochat.VideoChatView;
+	import org.bigbluebutton.view.navigation.pages.videochat2.VideoChatView2;
 
 	public class PagesENUM
 	{
@@ -45,7 +46,7 @@ package org.bigbluebutton.view.navigation.pages
 				dic[LOGIN] = LoginPageView;
 				dic[PROFILE] = ProfileView;
 				dic[USER_DETAIS] = UserDetaisView;
-				dic[VIDEO_CHAT] = VideoChatView;
+				dic[VIDEO_CHAT] = VideoChatView2;
 				dic[CHATROOMS] = ChatRoomsView;
 				dic[CHAT] = ChatView;
 				dic[PARTICIPANTS] = ParticipantsView;

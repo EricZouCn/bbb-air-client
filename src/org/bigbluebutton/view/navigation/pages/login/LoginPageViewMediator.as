@@ -39,6 +39,8 @@ package org.bigbluebutton.view.navigation.pages.login
 
 		[Inject]
 		public var userUISession: IUserUISession;
+		
+		static var isBusy:int;
 
 
 		override public function initialize():void
@@ -49,6 +51,8 @@ package org.bigbluebutton.view.navigation.pages.login
 			userUISession.unsuccessJoined.add(onUnsucess);
 
 			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);
+			
+			isBusy = 0;
 		}
 
 		private function onUnsucess(reason:String):void 
@@ -85,11 +89,17 @@ package org.bigbluebutton.view.navigation.pages.login
 
 		public function onInvokeEvent(invocation:InvokeEvent):void 
 		{
-			var createUrl:String = "http://bbb.17mian.cn:80/bigbluebutton/api/create?meetingID=Demo+Meeting&attendeePW=ap&moderatorPW=mp&welcome=Welcome+to+17mian+meeting%21&checksum=406f9df41be2309d9a79f7c990f54c2c52de0f3e";
-			var fetcher:URLFetcher = new URLFetcher();
-			fetcher.successSignal.add(onSuccess);
-			fetcher.unsuccessSignal.add(onUnsucess);
-			fetcher.fetch(createUrl);
+			if(isBusy == 0) {
+				NativeApplication.nativeApplication.removeEventListener(InvokeEvent.INVOKE, onInvokeEvent);
+				
+				var createUrl:String = "http://bbb.17mian.cn:80/bigbluebutton/api/create?meetingID=Demo+Meeting&attendeePW=ap&moderatorPW=mp&welcome=Welcome+to+17mian+meeting%21&checksum=406f9df41be2309d9a79f7c990f54c2c52de0f3e";
+				var fetcher:URLFetcher = new URLFetcher();
+				fetcher.successSignal.add(onSuccess);
+				fetcher.unsuccessSignal.add(onUnsucess);
+				fetcher.fetch(createUrl);
+				
+				isBusy = 1;
+			}
 		}
 		
 		protected function onSuccess(data:Object, responseUrl:String, urlRequest:URLRequest):void {

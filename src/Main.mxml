@@ -50,6 +50,7 @@
 			import org.bigbluebutton.view.navigation.pages.selectparticipant.SelectParticipantConfig;
 			import org.bigbluebutton.view.navigation.pages.userdetails.UserDetaisConfig;
 			import org.bigbluebutton.view.navigation.pages.videochat.VideoChatConfig;
+			import org.bigbluebutton.view.navigation.pages.videochat2.VideoChatConfig2;
 			import org.bigbluebutton.view.ui.MicButtonConfig;
 			import org.bigbluebutton.view.ui.NavigationButtonConfig;
 			import org.bigbluebutton.view.ui.RecordingStatusConfig;
@@ -116,7 +117,7 @@
 					.configure(LoginPageConfig)
 					.configure(ChatConfig)
 					.configure(ChatRoomsConfig)
-					.configure(VideoChatConfig)
+					.configure(VideoChatConfig2)
 					.configure(ProfileConfig)
 					.configure(UserDetaisConfig)
 					.configure(ParticipantsConfig)

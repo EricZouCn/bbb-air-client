@@ -1,19 +1,10 @@
 package org.bigbluebutton.command
 {
 	import flash.media.Camera;
-	import flash.media.CameraPosition;
+	import flash.geom.Matrix;
 	
-	import mx.utils.ObjectUtil;
-	
-	import org.bigbluebutton.core.IBigBlueButtonConnection;
-	import org.bigbluebutton.core.IChatMessageService;
 	import org.bigbluebutton.core.IUsersService;
-	import org.bigbluebutton.core.IVideoConnection;
-	import org.bigbluebutton.model.IConferenceParameters;
 	import org.bigbluebutton.model.IUserSession;
-	import org.bigbluebutton.model.IUserUISession;
-	import org.bigbluebutton.view.navigation.pages.PagesENUM;
-	import org.osmf.logging.Log;
 	
 	import robotlegs.bender.bundles.mvcs.Command;
 	
@@ -69,8 +60,6 @@ package org.bigbluebutton.command
 			}
 			
 			var cam:Camera = this.getCamera(position);
-			
-			
 			/*
 			cam.setMode(160, 120, 5, false);
 			cam.setMotionLevel(0);

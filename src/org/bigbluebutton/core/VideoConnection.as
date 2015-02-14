@@ -5,6 +5,7 @@ package org.bigbluebutton.core
 	import flash.events.NetStatusEvent;
 	import flash.events.SecurityErrorEvent;
 	import flash.media.Camera;
+	import flash.media.VideoStreamSettings;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 	
