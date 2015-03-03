@@ -6,6 +6,7 @@
 			   xmlns:presentation="org.bigbluebutton.view.navigation.pages.presentation.*" 
 			   xmlns:ui="org.bigbluebutton.view.ui.*" 
 			   xmlns:common="org.bigbluebutton.view.navigation.pages.common.*" 
+			   xmlns:menuview2="org.bigbluebutton.view.navigation.pages.menuview2.*" 
 			   xmlns:loading="org.bigbluebutton.view.ui.loading.*"
 			   styleName="mainshellStyle"
 			   preinitialize="preinitializeHandler(event)" 
@@ -40,11 +41,13 @@
 			import org.bigbluebutton.view.navigation.pages.camerasettings.CameraSettingsConfig;
 			import org.bigbluebutton.view.navigation.pages.chat.ChatConfig;
 			import org.bigbluebutton.view.navigation.pages.chatrooms.ChatRoomsConfig;
-			import org.bigbluebutton.view.navigation.pages.common.MenuButtonsConfig;
+			import org.bigbluebutton.view.navigation.pages.menuview2.MenuButtonsConfig2;
 			import org.bigbluebutton.view.navigation.pages.deskshare.DeskshareConfig;
 			import org.bigbluebutton.view.navigation.pages.disconnect.DisconnectPageConfig;
 			import org.bigbluebutton.view.navigation.pages.login.LoginPageConfig;
 			import org.bigbluebutton.view.navigation.pages.participants.ParticipantsConfig;
+			import org.bigbluebutton.view.navigation.pages.interviews.InterviewsConfig2;
+			import org.bigbluebutton.view.navigation.pages.careernews.CareernewsConfig2;
 			import org.bigbluebutton.view.navigation.pages.presentation.PresentationConfig;
 			import org.bigbluebutton.view.navigation.pages.profile.ProfileConfig;
 			import org.bigbluebutton.view.navigation.pages.selectparticipant.SelectParticipantConfig;
@@ -121,6 +124,8 @@
 					.configure(ProfileConfig)
 					.configure(UserDetaisConfig)
 					.configure(ParticipantsConfig)
+					.configure(InterviewsConfig2)
+					.configure(CareernewsConfig2)
 					.configure(SelectParticipantConfig)		
 					.configure(MicButtonConfig)
 					.configure(NavigationButtonConfig)
@@ -170,9 +175,9 @@
 				stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGING, stageOrientationChangingHandler);
 				
 				// setup a custom orientation calculator based on the accelerometer because the default one doesn't work
-				_orientationCalc = new OrientationCalculator(pagesNavigatorView, accelerometerCallback);
-				_orientationCalc.active = true;
-				currentOrientation = _orientationCalc.currentOrientation;
+//				_orientationCalc = new OrientationCalculator(pagesNavigatorView, accelerometerCallback);
+//				_orientationCalc.active = true;
+//				currentOrientation = _orientationCalc.currentOrientation;
 			}
 			
 			private function fl_Activate(event:Event=null):void {
@@ -220,6 +225,6 @@
 		</s:SkinnableContainer>
 
 		<navigation:PagesNavigatorView id="pagesNavigatorView" width="100%" height="100%"/>
-    	<common:MenuButtonsView id="bottomMenu" width="100%" height="{getStyle('bottomToolBarHeight')}"/>
+    	<menuview2:MenuButtonsView2 id="bottomMenu" width="100%" height="{getStyle('bottomToolBarHeight')}"/>
 	</s:Group>	
 </s:Application>

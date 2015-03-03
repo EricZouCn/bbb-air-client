@@ -92,6 +92,7 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 		public function dispose():void
 		{
 			stopStream();
+			stopStream2();
 		}
 		
 		public function get noVideoMessage():Label

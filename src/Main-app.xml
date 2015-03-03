@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/3.1">
+<application xmlns="http://ns.adobe.com/air/application/16.0">
 
 <!-- Adobe AIR Application Descriptor File Template.
 
@@ -15,10 +15,10 @@
 
 	<!-- A universally unique application identifier. Must be unique across all AIR applications.
 	Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-	<id>org.bigbluebutton.bbb-air-client</id>
+	<id>Main</id>
 
 	<!-- Used as the filename for the application. Required. -->
-	<filename>BigBlueButton</filename>
+	<filename>17mian</filename>
 
 	<!-- The name that is displayed in the AIR application installer. 
 	May have multiple values for each language. See samples or xsd schema file. Optional. -->
@@ -92,7 +92,8 @@
 
         <!-- The initial aspect ratio of the app when launched (either "portrait" or "landscape"). Optional. Mobile only. Default is the natural orientation of the device -->
 
-        <aspectRatio>landscape</aspectRatio><!--  -->
+        <aspectRatio>landscape</aspectRatio>
+        <!--  -->
 
         <!-- Whether the app will begin auto-orienting on launch. Optional. Mobile only. Default false -->
 
@@ -108,8 +109,8 @@
 
 		<!-- Whether or not to pan when a soft keyboard is raised or lowered (either "pan" or "none").  Optional.  Defaults "pan." -->
 		<!-- <softKeyboardBehavior></softKeyboardBehavior> -->
-	<autoOrients>true</autoOrients>
-        <fullScreen>false</fullScreen>
+		<autoOrients>true</autoOrients>
+        <fullScreen>true</fullScreen>
         <visible>true</visible>
         <softKeyboardBehavior>none</softKeyboardBehavior>
     </initialWindow>
@@ -212,7 +213,7 @@
 				<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 				<uses-feature android:required="true" android:name="android.hardware.touchscreen.multitouch"/>
 				<application android:enabled="true">
-					<activity android:excludeFromRecents="false">
+					<activity android:excludeFromRecents="false" android:screenOrientation="portrait">
 						<intent-filter>
 							<action android:name="android.intent.action.MAIN"/>
 							<category android:name="android.intent.category.LAUNCHER"/>

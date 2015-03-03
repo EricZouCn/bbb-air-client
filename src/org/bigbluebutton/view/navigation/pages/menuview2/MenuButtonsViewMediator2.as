@@ -1,4 +1,4 @@
-package org.bigbluebutton.view.navigation.pages.common
+package org.bigbluebutton.view.navigation.pages.menuview2
 {
 	import mx.core.FlexGlobals;
 	

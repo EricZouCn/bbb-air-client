@@ -1,11 +1,11 @@
-package org.bigbluebutton.view.navigation.pages.common
+package org.bigbluebutton.view.navigation.pages.menuview2
 {	
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
 	import robotlegs.bender.framework.api.IConfig;
 	import robotlegs.bender.framework.api.IInjector;
 
-	public class MenuButtonsConfig implements IConfig
+	public class MenuButtonsConfig2 implements IConfig
 	{
 		[Inject]
 		public var injector: IInjector;
@@ -38,7 +38,7 @@ package org.bigbluebutton.view.navigation.pages.common
 		 */
 		private function mediators():void
 		{
-			mediatorMap.map(IMenuButtonsView).toMediator(MenuButtonsViewMediator2);
+			mediatorMap.map(IMenuButtonsView).toMediator(MenuButtonsViewMediator);
 		}
 		
 		/**

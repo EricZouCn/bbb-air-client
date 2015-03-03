@@ -5,12 +5,11 @@
 				xmlns:view="org.bigbluebutton.core.view.*" 
 				>
 	<view:states>
-		<s:State name="verticalState"/>
 		<s:State name="horizontalState"/>
 	</view:states>
 	<s:Group width="100%" height="100%">
 		<s:layout>
-			<s:HorizontalLayout />
+			<s:VerticalLayout />
 		</s:layout>
 
 		<s:Group id="videoGroup0" width="70%" height="100%" >

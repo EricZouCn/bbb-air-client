@@ -10,6 +10,8 @@ package org.bigbluebutton.view.navigation.pages
 	import org.bigbluebutton.view.navigation.pages.disconnect.DisconnectPageView;
 	import org.bigbluebutton.view.navigation.pages.login.LoginPageView;
 	import org.bigbluebutton.view.navigation.pages.participants.ParticipantsView;
+	import org.bigbluebutton.view.navigation.pages.interviews.InterviewsView2;
+	import org.bigbluebutton.view.navigation.pages.careernews.CareernewsView2;
 	import org.bigbluebutton.view.navigation.pages.presentation.PresentationView;
 	import org.bigbluebutton.view.navigation.pages.profile.ProfileView;
 	import org.bigbluebutton.view.navigation.pages.selectparticipant.SelectParticipantView;
@@ -32,6 +34,8 @@ package org.bigbluebutton.view.navigation.pages
 		public static const DESKSHARE:String = "Deskshare";
 		public static const CAMERASETTINGS:String = "CameraSettings";
 		public static const AUDIOSETTINGS:String = "AudioSettings";
+		public static const INTERVIEWS:String = "interviews";
+		public static const CAREERNEWS:String = "careernews";
 		
 		/**
 		 * Especials
@@ -50,6 +54,8 @@ package org.bigbluebutton.view.navigation.pages
 				dic[CHATROOMS] = ChatRoomsView;
 				dic[CHAT] = ChatView;
 				dic[PARTICIPANTS] = ParticipantsView;
+				dic[INTERVIEWS] = InterviewsView2;
+				dic[CAREERNEWS] = CareernewsView2;
 				dic[SELECT_PARTICIPANT] = SelectParticipantView;
 				dic[DISCONNECT] = DisconnectPageView;
 				dic[DESKSHARE] = DeskshareView;
