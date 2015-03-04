@@ -3,12 +3,12 @@
 				xmlns:s="library://ns.adobe.com/flex/spark" 
 				xmlns:mx="library://ns.adobe.com/flex/mx" 
 				xmlns:view="org.bigbluebutton.core.view.*" 
-				xmlns:participants="org.bigbluebutton.view.navigation.pages.participants.*"
+				xmlns:interviews="org.bigbluebutton.view.navigation.pages.interviews.*"
 				>
 	<s:Group width="100%" height="100%">
 		<s:layout>
 			<s:VerticalLayout/>
 		</s:layout>	
-		<participants:ParticipantsList id="participantslist" width="100%" height="100%" />
+		<interviews:InterviewsList2 id="interviewslist" width="100%" height="100%" />
 	</s:Group>
 </view:NoTabView>

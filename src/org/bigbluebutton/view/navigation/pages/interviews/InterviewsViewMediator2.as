@@ -7,11 +7,11 @@ package org.bigbluebutton.view.navigation.pages.interviews
 	import mx.collections.ArrayCollection;
 	import mx.core.FlexGlobals;
 	import mx.resources.ResourceManager;
-
+	
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.IUserUISession;
-	import org.bigbluebutton.model.User;
-	import org.bigbluebutton.model.UserList;
+	import org.bigbluebutton.model.Interview;
+	import org.bigbluebutton.model.InterviewList;
 	import org.bigbluebutton.view.navigation.pages.PagesENUM;
 	import org.bigbluebutton.view.navigation.pages.TransitionAnimationENUM;
 	import org.osflash.signals.ISignal;
@@ -44,54 +44,45 @@ package org.bigbluebutton.view.navigation.pages.interviews
 			dataProvider = new ArrayCollection();
 			view.list.dataProvider = dataProvider;
 			
-			view.list.addEventListener(IndexChangeEvent.CHANGE, onSelectParticipant);
+			view.list.addEventListener(IndexChangeEvent.CHANGE, onSelectInterview);
 			
 			dicUserIdtoUser = new Dictionary();
 			
-			var users:ArrayCollection = userSession.userList.users;
-			for each (var user:User in users)
+//			var interviews:ArrayCollection = userSession.userList.users;
+			var interviews:ArrayCollection = new ArrayCollection();
+			var interview1:Interview = new Interview();
+			interview1.position = "软件工程师";
+			interview1.datetime = "2015.3.5 10:30";
+			interviews.addItem(interview1);
+			interview1 = new Interview();
+			interview1.position = "测试工程师";
+			interview1.datetime = "2015.3.6 16:15";
+			interviews.addItem(interview1);
+			
+			for each (var interview:Interview in interviews)
 			{
-				addUser(user);
+				addInterview(interview);
 			}
 			
-			userSession.userList.userChangeSignal.add(userChanged);
-			userSession.userList.userAddedSignal.add(addUser);
-			userSession.userList.userRemovedSignal.add(userRemoved);
 			setPageTitle();
 			FlexGlobals.topLevelApplication.profileBtn.visible = true;
 			FlexGlobals.topLevelApplication.backBtn.visible = false;
 		}
 		
-		private function addUser(user:User):void
+		private function addInterview(interview:Interview):void
 		{
-			dataProvider.addItem(user);
+			dataProvider.addItem(interview);
 			dataProvider.refresh();
-			dicUserIdtoUser[user.userID] = user;
+//			dicInterviewIdtoInterview[interview.interviewID] = interview;
 			setPageTitle();
 		}
 		
-		private function userRemoved(userID:String):void
+		protected function onSelectInterview(event:IndexChangeEvent):void
 		{
-			var user:User = dicUserIdtoUser[userID] as User;
-			var index:int = dataProvider.getItemIndex(user);
-			if(index >= 0) {
-				dataProvider.removeItemAt(index);
-				dicUserIdtoUser[user.userID] = null;
-			}
-			setPageTitle();
-		}
-		
-		private function userChanged(user:User, property:String = null):void
-		{
-			dataProvider.refresh();
-		}
-		
-		protected function onSelectParticipant(event:IndexChangeEvent):void
-		{
-			if (event.newIndex >= 0) {
-				var user:User = dataProvider.getItemAt(event.newIndex) as User;
-				userUISession.pushPage(PagesENUM.USER_DETAIS, user, TransitionAnimationENUM.SLIDE_LEFT);
-			}
+//			if (event.newIndex >= 0) {
+//				var user:User = dataProvider.getItemAt(event.newIndex) as User;
+//				userUISession.pushPage(PagesENUM.USER_DETAIS, user, TransitionAnimationENUM.SLIDE_LEFT);
+//			}
 		}
 		
 		/**
@@ -111,10 +102,6 @@ package org.bigbluebutton.view.navigation.pages.interviews
 			
 			view.dispose();
 			view = null;
-			
-			userSession.userList.userChangeSignal.remove(userChanged);
-			userSession.userList.userAddedSignal.remove(addUser);
-			userSession.userList.userRemovedSignal.remove(userRemoved);
 		}
 	}
 }

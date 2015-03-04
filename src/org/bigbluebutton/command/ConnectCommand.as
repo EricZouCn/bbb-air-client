@@ -137,7 +137,7 @@ package org.bigbluebutton.command
 		private function successUsersAdded():void
 		{
 			userUISession.loading = false;
-			userUISession.pushPage(PagesENUM.PARTICIPANTS);
+			userUISession.pushPage(PagesENUM.INTERVIEWS);
 			
 			userSession.userList.allUsersAddedSignal.remove(successUsersAdded);
 		}
