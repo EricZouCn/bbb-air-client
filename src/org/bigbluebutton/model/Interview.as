@@ -40,6 +40,18 @@ package org.bigbluebutton.model
 		{
 			_logo = value;
 		}
+
+		private var _company:String;
+
+		public function get company():String
+		{
+			return _company;
+		}
+
+		public function set company(value:String):void
+		{
+			_company = value;
+		}
 		
 		private var _position:String = VIEWER;
 

@@ -2,16 +2,17 @@ package org.bigbluebutton.view.navigation.pages.careernews
 {
 	import flash.display.DisplayObject;
 	import flash.utils.Dictionary;
+	import flash.net.URLRequest;
 	
 	import mx.binding.utils.BindingUtils;
 	import mx.collections.ArrayCollection;
 	import mx.core.FlexGlobals;
 	import mx.resources.ResourceManager;
 
+	import org.bigbluebutton.core.util.URLFetcher;
 	import org.bigbluebutton.model.IUserSession;
 	import org.bigbluebutton.model.IUserUISession;
-	import org.bigbluebutton.model.User;
-	import org.bigbluebutton.model.UserList;
+	import org.bigbluebutton.model.Careernews;
 	import org.bigbluebutton.view.navigation.pages.PagesENUM;
 	import org.bigbluebutton.view.navigation.pages.TransitionAnimationENUM;
 	import org.osflash.signals.ISignal;
@@ -48,49 +49,50 @@ package org.bigbluebutton.view.navigation.pages.careernews
 			
 			dicUserIdtoUser = new Dictionary();
 			
-			var users:ArrayCollection = userSession.userList.users;
-			for each (var user:User in users)
-			{
-				addUser(user);
-			}
+			var createUrl:String = "http://www.17mian.cn/demo/careernews.js";
+			var fetcher:URLFetcher = new URLFetcher();
+			fetcher.successSignal.add(onSuccess);
+			fetcher.unsuccessSignal.add(onUnsucess);
+			fetcher.fetch(createUrl);
 			
-			userSession.userList.userChangeSignal.add(userChanged);
-			userSession.userList.userAddedSignal.add(addUser);
-			userSession.userList.userRemovedSignal.add(userRemoved);
 			setPageTitle();
-			FlexGlobals.topLevelApplication.profileBtn.visible = true;
+			FlexGlobals.topLevelApplication.profileBtn.visible = false;
 			FlexGlobals.topLevelApplication.backBtn.visible = false;
 		}
 		
-		private function addUser(user:User):void
+		private function onUnsucess(reason:String):void 
 		{
-			dataProvider.addItem(user);
-			dataProvider.refresh();
-			dicUserIdtoUser[user.userID] = user;
-			setPageTitle();
 		}
 		
-		private function userRemoved(userID:String):void
-		{
-			var user:User = dicUserIdtoUser[userID] as User;
-			var index:int = dataProvider.getItemIndex(user);
-			if(index >= 0) {
-				dataProvider.removeItemAt(index);
-				dicUserIdtoUser[user.userID] = null;
+		protected function onSuccess(data:Object, responseUrl:String, urlRequest:URLRequest):void {
+			var objs:Object = JSON.parse(data.toString());
+			var news:Careernews;
+			
+			for each (var obj:Object in objs)
+			{
+				news = new Careernews();
+				news.icon = obj.icon;
+				news.title = obj.title;
+				news.brief = obj.brief;
+				news.page = obj.page;
+				news.datetime = obj.datetime;
+				
+				addCareernews(news);
 			}
-			setPageTitle();
 		}
 		
-		private function userChanged(user:User, property:String = null):void
+		private function addCareernews(news:Careernews):void
 		{
+			dataProvider.addItem(news);
 			dataProvider.refresh();
+			setPageTitle();
 		}
 		
 		protected function onSelectParticipant(event:IndexChangeEvent):void
 		{
 			if (event.newIndex >= 0) {
-				var user:User = dataProvider.getItemAt(event.newIndex) as User;
-				userUISession.pushPage(PagesENUM.USER_DETAIS, user, TransitionAnimationENUM.SLIDE_LEFT);
+				var news:Careernews = dataProvider.getItemAt(event.newIndex) as Careernews;
+				userUISession.pushPage(PagesENUM.WEBVIEW, news, TransitionAnimationENUM.SLIDE_LEFT);
 			}
 		}
 		
@@ -111,10 +113,6 @@ package org.bigbluebutton.view.navigation.pages.careernews
 			
 			view.dispose();
 			view = null;
-			
-			userSession.userList.userChangeSignal.remove(userChanged);
-			userSession.userList.userAddedSignal.remove(addUser);
-			userSession.userList.userRemovedSignal.remove(userRemoved);
 		}
 	}
 }

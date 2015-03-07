@@ -58,7 +58,7 @@ package org.bigbluebutton.view.navigation.pages.participants
 			userSession.userList.userAddedSignal.add(addUser);
 			userSession.userList.userRemovedSignal.add(userRemoved);
 			setPageTitle();
-			FlexGlobals.topLevelApplication.profileBtn.visible = true;
+			FlexGlobals.topLevelApplication.profileBtn.visible = false;
 			FlexGlobals.topLevelApplication.backBtn.visible = false;
 		}
 		

@@ -22,8 +22,8 @@ package org.bigbluebutton.view.ui.loading
 		{
 			Log.getLogger("org.bigbluebutton").info(String(this));
 			
-			view.setVisible(false);
-			view.includeInLayout = false;
+//			view.setVisible(false);
+//			view.includeInLayout = false;
 			
 			userUISettings.loadingSignal.add(update);
 		}

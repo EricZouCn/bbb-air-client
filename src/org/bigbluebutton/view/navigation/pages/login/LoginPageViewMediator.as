@@ -15,7 +15,9 @@ package org.bigbluebutton.view.navigation.pages.login
 	import org.bigbluebutton.model.IUserUISession;
 	import org.bigbluebutton.model.UserSession;
 	import org.bigbluebutton.model.UserUISession;
+	import org.bigbluebutton.model.Interview;
 	import org.bigbluebutton.view.navigation.IPagesNavigatorView;
+	import org.bigbluebutton.view.navigation.pages.PagesENUM;
 	import org.flexunit.internals.namespaces.classInternal;
 	import org.osmf.logging.Log;
 	
@@ -50,7 +52,8 @@ package org.bigbluebutton.view.navigation.pages.login
 			//loginService.unsuccessJoinedSignal.add(onUnsucess);
 			userUISession.unsuccessJoined.add(onUnsucess);
 
-			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);
+			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent2);
+			userUISession.videoSignal.add(onInvokeEvent);
 			
 			isBusy = 0;
 		}
@@ -87,7 +90,7 @@ package org.bigbluebutton.view.navigation.pages.login
 			// view.messageText.text = reason;
 		}
 
-		public function onInvokeEvent(invocation:InvokeEvent):void 
+		public function onInvokeEvent(interview:Interview):void 
 		{
 			if(isBusy == 0) {
 				NativeApplication.nativeApplication.removeEventListener(InvokeEvent.INVOKE, onInvokeEvent);
@@ -100,6 +103,12 @@ package org.bigbluebutton.view.navigation.pages.login
 				
 				isBusy = 1;
 			}
+		}
+
+		public function onInvokeEvent2(invocation:InvokeEvent):void 
+		{
+			userUISession.loading = false;
+			userUISession.pushPage(PagesENUM.INTERVIEWS);
 		}
 		
 		protected function onSuccess(data:Object, responseUrl:String, urlRequest:URLRequest):void {
@@ -137,7 +146,7 @@ package org.bigbluebutton.view.navigation.pages.login
 
 			if (url.lastIndexOf("://") != -1)
 			{
-				NativeApplication.nativeApplication.removeEventListener(InvokeEvent.INVOKE, onInvokeEvent);	
+				NativeApplication.nativeApplication.removeEventListener(InvokeEvent.INVOKE, onInvokeEvent2);	
 
 				url = getEndURL(url);
 			}

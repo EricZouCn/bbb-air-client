@@ -22,7 +22,7 @@ package org.bigbluebutton.view.navigation.pages.careernews
 		
 		public function get list():List
 		{
-			return participantslist;
+			return careernewslist;
 		}
 		/*
 		public function onClick(e:MouseEvent):void

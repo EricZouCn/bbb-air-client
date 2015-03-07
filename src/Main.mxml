@@ -50,6 +50,7 @@
 			import org.bigbluebutton.view.navigation.pages.careernews.CareernewsConfig2;
 			import org.bigbluebutton.view.navigation.pages.presentation.PresentationConfig;
 			import org.bigbluebutton.view.navigation.pages.profile.ProfileConfig;
+			import org.bigbluebutton.view.navigation.pages.webview.WebviewConfig;
 			import org.bigbluebutton.view.navigation.pages.selectparticipant.SelectParticipantConfig;
 			import org.bigbluebutton.view.navigation.pages.userdetails.UserDetaisConfig;
 			import org.bigbluebutton.view.navigation.pages.videochat.VideoChatConfig;
@@ -116,25 +117,26 @@
 					
 					.configure(LoadingScreenConfig)
 					.configure(PagesNavigatorConfig)
-					.configure(PresentationConfig)
+//					.configure(PresentationConfig)
 					.configure(LoginPageConfig)
-					.configure(ChatConfig)
-					.configure(ChatRoomsConfig)
+//					.configure(ChatConfig)
+//					.configure(ChatRoomsConfig)
 					.configure(VideoChatConfig2)
-					.configure(ProfileConfig)
-					.configure(UserDetaisConfig)
-					.configure(ParticipantsConfig)
+//					.configure(ProfileConfig)
+					.configure(WebviewConfig)
+//					.configure(UserDetaisConfig)
+//					.configure(ParticipantsConfig)
 					.configure(InterviewsConfig2)
 					.configure(CareernewsConfig2)
-					.configure(SelectParticipantConfig)		
-					.configure(MicButtonConfig)
+//					.configure(SelectParticipantConfig)		
+//					.configure(MicButtonConfig)
 					.configure(NavigationButtonConfig)
-					.configure(SwapCameraConfig)
+//					.configure(SwapCameraConfig)
 					.configure(DisconnectPageConfig)
-					.configure(DeskshareConfig)
+//					.configure(DeskshareConfig)
 					.configure(RecordingStatusConfig)
-					.configure(CameraSettingsConfig)
-					.configure(AudioSettingsConfig)
+//					.configure(CameraSettingsConfig)
+//					.configure(AudioSettingsConfig)
 					
 					.configure(new ContextView(this));
 				
@@ -213,14 +215,14 @@
 		<s:SkinnableContainer id="topActionBar" width="100%" height="{getStyle('toolBarHeight')}" styleName="topToolBarStyle"  verticalCenter="0">
 			<s:HGroup width="100%" height="100%">
 				<s:Group>
-					<ui:NavigationButton id="profileBtn" styleName="profileButtonStyle topButtonStyle"
+					<ui:NavigationButton id="profileBtn" styleName="profileButtonStyle topButtonStyle" visible="false"
 										 navigateTo="{[PagesENUM.PROFILE]}" transitionAnimation="{TransitionAnimationENUM.SLIDE_LEFT}"/>
-					<ui:NavigationButton id="backBtn" styleName="backButtonStyle topButtonStyle"
+					<ui:NavigationButton id="backBtn" styleName="backButtonStyle topButtonStyle" visible="false"
 										 navigateTo="{[PagesENUM.LAST]}" transitionAnimation="{TransitionAnimationENUM.SLIDE_RIGHT}"/>
 				</s:Group>
 				<s:Label id="pageName" styleName="pageNameStyle" width="100%" height="100%"/>
-				<ui:RecordingStatus id="recordingStatus" styleName="recordingStatusIconStyle topButtonStyle"/>
-				<ui:MicButton id="microphoneBtn" styleName="micButtonStyle topButtonStyle"/>
+				<ui:RecordingStatus id="recordingStatus" styleName="recordingStatusIconStyle topButtonStyle" visible="false"/>
+				<ui:MicButton id="microphoneBtn" styleName="micButtonStyle topButtonStyle" visible="false"/>
 			</s:HGroup>
 		</s:SkinnableContainer>
 

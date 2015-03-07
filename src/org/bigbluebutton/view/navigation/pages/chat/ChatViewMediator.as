@@ -79,7 +79,7 @@ package org.bigbluebutton.view.navigation.pages.chat
 			
 			(view as View).addEventListener(ViewNavigatorEvent.VIEW_DEACTIVATE, viewDeactivateHandler);
 			FlexGlobals.topLevelApplication.backBtn.visible = false;
-			FlexGlobals.topLevelApplication.profileBtn.visible = true;
+			FlexGlobals.topLevelApplication.profileBtn.visible = false;
 		}
 		
 		/**

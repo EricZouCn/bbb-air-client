@@ -17,19 +17,30 @@
 				{					
 					profileIcon.visible = true;
 										
-					labelDisplay.text = obj.position;
+					labelDisplay.text = obj.position + "[" + obj.datetime + "]";
 //					subLabelDisplay.visible = obj.datetime;
-					subLabelDisplay.text = obj.datetime;
+					subLabelDisplay.text = obj.company;
+					
+					loadImage("http://www.17mian.cn/demo/" + obj.logo);
 				}
 			}
 			
+			protected function loadImage(url:String):void
+			{
+				var loader: Loader = new Loader();   
+				var urlRequest: URLRequest = new URLRequest(url);   
+				loader.load(urlRequest);
+				loader.contentLoaderInfo.addEventListener(Event.COMPLETE,function(e:Event):void{
+					profileIcon.source = e.target.content;
+				});
+			}
 		]]>
 	</fx:Script>
 	<s:Group width="100%" height="{getStyle('itemHeight')}">
 			<s:layout>
 				<s:HorizontalLayout  verticalAlign="middle" paddingLeft="{getStyle('itemPaddingLeft')}" paddingRight="{getStyle('itemPaddingRight')}"/>
 			</s:layout>
-			<s:Image id="profileIcon" styleName="iconStyle moderatorIconStyle" height="100%"/>
+			<s:Image id="profileIcon" styleName="iconStyle interviewIconStyle" height="100%"/>
 			<s:Group width="90%">
 				<s:layout>
 					<s:VerticalLayout/>

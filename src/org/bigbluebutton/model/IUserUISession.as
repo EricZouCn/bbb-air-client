@@ -17,5 +17,6 @@ package org.bigbluebutton.model
 		function get currentPageDetails():Object;
 		function get loading():Boolean;
 		function set loading(value:Boolean):void;		
+		function get videoSignal(): ISignal;
 	}
 }

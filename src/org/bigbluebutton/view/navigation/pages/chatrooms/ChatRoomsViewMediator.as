@@ -94,7 +94,7 @@ package org.bigbluebutton.view.navigation.pages.chatrooms
 			setPageTitle();
 			chatMessagesSession.chatMessageChangeSignal.add(newMessageReceived);
 			FlexGlobals.topLevelApplication.backBtn.visible = false;
-			FlexGlobals.topLevelApplication.profileBtn.visible = true;
+			FlexGlobals.topLevelApplication.profileBtn.visible = false;
 		}
 		
 		/**

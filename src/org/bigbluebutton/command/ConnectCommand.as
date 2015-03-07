@@ -136,8 +136,9 @@ package org.bigbluebutton.command
 		
 		private function successUsersAdded():void
 		{
-			userUISession.loading = false;
-			userUISession.pushPage(PagesENUM.INTERVIEWS);
+//			userUISession.loading = false;
+//			userUISession.pushPage(PagesENUM.INTERVIEWS);
+			userUISession.pushPage(PagesENUM.VIDEO_CHAT);
 			
 			userSession.userList.allUsersAddedSignal.remove(successUsersAdded);
 		}

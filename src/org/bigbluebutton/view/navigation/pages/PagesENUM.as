@@ -14,6 +14,7 @@ package org.bigbluebutton.view.navigation.pages
 	import org.bigbluebutton.view.navigation.pages.careernews.CareernewsView2;
 	import org.bigbluebutton.view.navigation.pages.presentation.PresentationView;
 	import org.bigbluebutton.view.navigation.pages.profile.ProfileView;
+	import org.bigbluebutton.view.navigation.pages.webview.WebView;
 	import org.bigbluebutton.view.navigation.pages.selectparticipant.SelectParticipantView;
 	import org.bigbluebutton.view.navigation.pages.userdetails.UserDetaisView;
 	import org.bigbluebutton.view.navigation.pages.videochat.VideoChatView;
@@ -36,6 +37,7 @@ package org.bigbluebutton.view.navigation.pages
 		public static const AUDIOSETTINGS:String = "AudioSettings";
 		public static const INTERVIEWS:String = "interviews";
 		public static const CAREERNEWS:String = "careernews";
+		public static const WEBVIEW:String = "webview";
 		
 		/**
 		 * Especials
@@ -49,6 +51,7 @@ package org.bigbluebutton.view.navigation.pages
 				dic[PRESENTATION] = PresentationView;
 				dic[LOGIN] = LoginPageView;
 				dic[PROFILE] = ProfileView;
+				dic[WEBVIEW] = WebView;
 				dic[USER_DETAIS] = UserDetaisView;
 				dic[VIDEO_CHAT] = VideoChatView2;
 				dic[CHATROOMS] = ChatRoomsView;

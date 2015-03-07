@@ -36,6 +36,16 @@ package org.bigbluebutton.model
 		}
 		
 		/**
+		 * Dispatched when begin video interview
+		 */
+		private var _videoSignal: Signal = new Signal();
+		
+		public function get videoSignal(): ISignal
+		{
+			return _videoSignal;
+		}
+		
+		/**
 		 * Dispatched a transition between pages starts
 		 */
 		private var _pageTransitionStartSignal: Signal = new Signal();
