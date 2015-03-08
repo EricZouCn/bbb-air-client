@@ -69,7 +69,7 @@ package org.bigbluebutton.view.navigation
 					break;
 				}
 			}
-			if(pageName == PagesENUM.PARTICIPANTS || pageName == PagesENUM.PRESENTATION || pageName == PagesENUM.VIDEO_CHAT || pageName == PagesENUM.CHATROOMS)
+			if(pageName == PagesENUM.CAREERNEWS || pageName == PagesENUM.INTERVIEWS)
 			{
 				view.popAll();
 				view.pushView(PagesENUM.getClassfromName(pageName), null, null, transition);

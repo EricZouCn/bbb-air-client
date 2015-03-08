@@ -55,6 +55,8 @@ package org.bigbluebutton.view.navigation.pages.login
 			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent2);
 			userUISession.videoSignal.add(onInvokeEvent);
 			
+			userSession.logoutSignal.add(logout);
+			
 			isBusy = 0;
 		}
 
@@ -89,6 +91,11 @@ package org.bigbluebutton.view.navigation.pages.login
 			}
 			// view.messageText.text = reason;
 		}
+		
+		public function logout():void
+		{
+			isBusy = 0;
+		}
 
 		public function onInvokeEvent(interview:Interview):void 
 		{
@@ -101,7 +108,7 @@ package org.bigbluebutton.view.navigation.pages.login
 				fetcher.unsuccessSignal.add(onUnsucess);
 				fetcher.fetch(createUrl);
 				
-				isBusy = 1;
+//				isBusy = 1;
 			}
 		}
 

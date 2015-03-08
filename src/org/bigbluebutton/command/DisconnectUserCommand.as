@@ -24,10 +24,11 @@ package org.bigbluebutton.command
 		
 		override public function execute():void
 		{
-			userUISession.pushPage(PagesENUM.DISCONNECT, disconnectionStatusCode);	
+//			userUISession.pushPage(PagesENUM.DISCONNECT, disconnectionStatusCode);	
 			userSession.mainConnection.connection.close();
 			userSession.videoConnection.connection.close();
 			userSession.voiceConnection.connection.close();
+			userSession.deskshareConnection.connection.close();
 		}
 	}
 }

@@ -137,5 +137,28 @@ package org.bigbluebutton.model
 			_loading = value;
 			_loadingSignal.dispatch(_loading);
 		}
+		
+		/**
+		 * Should be set true when the video connection is connected
+		 */ 
+		private var _videoConnectedSignal: Signal = new Signal();
+		
+		public function get videoConnectedSignal(): ISignal
+		{
+			return _videoConnectedSignal;
+		}
+
+		private var _videoConnected:Boolean = false;
+
+		public function get videoConnected():Boolean
+		{
+			return _videoConnected;
+		}
+
+		public function set videoConnected(value:Boolean):void
+		{
+			_videoConnected = value;
+			_videoConnectedSignal.dispatch(_videoConnected);
+		}
 	}
 }

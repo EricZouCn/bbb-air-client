@@ -23,6 +23,7 @@ package org.bigbluebutton.view.navigation.pages.interviews
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
 	import spark.events.IndexChangeEvent;
+	import spark.events.ListEvent;
 	
 	public class InterviewsViewMediator2 extends Mediator
 	{
@@ -112,7 +113,7 @@ package org.bigbluebutton.view.navigation.pages.interviews
 
 			if (event.newIndex >= 0) {
 				var interview:Interview = dataProvider.getItemAt(event.newIndex) as Interview;
-				userUISession.pushPage(PagesENUM.USER_DETAIS, interview, TransitionAnimationENUM.SLIDE_LEFT);
+//				userUISession.pushPage(PagesENUM.USER_DETAIS, interview, TransitionAnimationENUM.SLIDE_LEFT);
 				userUISession.videoSignal.dispatch(interview);
 			}
 		}

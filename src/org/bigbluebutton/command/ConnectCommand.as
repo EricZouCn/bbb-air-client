@@ -156,12 +156,16 @@ package org.bigbluebutton.command
 		private function successVideoConnected():void {
 			Log.getLogger("org.bigbluebutton").info(String(this) + ":successVideoConnected()");
 			
+			userUISession.videoConnected = true;
+			
 			videoConnection.successConnected.remove(successVideoConnected);
 			videoConnection.unsuccessConnected.remove(unsuccessVideoConnected);
 		}
 		
 		private function unsuccessVideoConnected(reason:String):void {
 			Log.getLogger("org.bigbluebutton").info(String(this) + ":unsuccessVideoConnected()");
+			
+			userUISession.videoConnected = false;
 			
 			videoConnection.unsuccessConnected.remove(unsuccessVideoConnected);
 			videoConnection.successConnected.remove(successVideoConnected);

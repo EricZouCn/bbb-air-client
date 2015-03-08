@@ -1,6 +1,8 @@
 package org.bigbluebutton.view.navigation.pages.videochat2
 {
 	import flash.display.DisplayObject;
+	import flash.media.Camera;
+	import flash.media.CameraPosition;
 	
 	import mx.collections.ArrayCollection;
 	import mx.core.FlexGlobals;
@@ -15,6 +17,9 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 	import org.bigbluebutton.view.navigation.pages.PagesENUM;
 	import org.mockito.integrations.currentMockito;
 	import org.osmf.logging.Log;
+	import org.bigbluebutton.command.CameraQualitySignal;
+	import org.bigbluebutton.command.ShareCameraSignal;
+	import org.bigbluebutton.core.VideoConnection;
 	
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
@@ -30,6 +35,9 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 		
 		[Inject]
 		public var userUISession: IUserUISession;
+		
+		[Inject]
+		public var shareCameraSignal: ShareCameraSignal;			
 		
 		protected var dataProvider:ArrayCollection;
 		
@@ -48,8 +56,28 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 			FlexGlobals.topLevelApplication.backBtn.visible = true;
 			FlexGlobals.topLevelApplication.profileBtn.visible = false;
 			
+			userUISession.videoConnectedSignal.add(videoConnected);
+			
 			dataProvider = new ArrayCollection();
 			view.streamlist.dataProvider = dataProvider;
+			
+			if(userUISession.videoConnected)
+				checkUserVideo();
+		}
+		
+		/**
+		 * Update the view when the video connection is connected
+		 */ 
+		private function videoConnected(videoConnected:Boolean):void
+		{
+			if(!videoConnected)
+				return;
+			
+			checkUserVideo();
+		}
+		
+		private function checkUserVideo():void
+		{
 			var users:ArrayCollection = userSession.userList.users;
 			for each(var u:User in users)
 			{
@@ -60,10 +88,13 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 					{
 						view.streamlist.selectedIndex = dataProvider.getItemIndex(u);
 					}
-
+					
 					checkVideo(u);
 				}
-			}		
+			}	
+			
+			userSession.videoConnection.selectedCameraQuality = VideoConnection.CAMERA_QUALITY_MEDIUM;	
+			shareCameraSignal.dispatch(!userSession.userList.me.hasStream, CameraPosition.FRONT);
 		}
 		
 		protected function getUserWithCamera():User
@@ -123,6 +154,8 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 			
 			view.dispose();
 			view = null;
+			
+			userSession.logoutSignal.dispatch();
 			
 			super.destroy();
 		}

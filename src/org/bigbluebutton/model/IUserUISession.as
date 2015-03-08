@@ -18,5 +18,8 @@ package org.bigbluebutton.model
 		function get loading():Boolean;
 		function set loading(value:Boolean):void;		
 		function get videoSignal(): ISignal;
+		function get videoConnectedSignal(): ISignal;
+		function get videoConnected():Boolean;
+		function set videoConnected(value:Boolean):void;		
 	}
 }
