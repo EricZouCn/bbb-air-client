@@ -17,6 +17,13 @@ s|Button.sendButtonStyle
 	skinClass: ClassReference("org.bigbluebutton.view.skins.SendMsgBtnSkin");
 }
 
+s|Button.loginButtonStyle
+{
+	backgroundColor:#FFFFFF;
+	onClickBackgroundColor:#DBDBDB;
+	skinClass: ClassReference("org.bigbluebutton.view.skins.SendMsgBtnSkin");
+}
+
 s|SkinnableContainer.topToolBarStyle
 {
 	gradientColorTop: #4A4C58;
@@ -229,6 +236,12 @@ global
 		bottomAlign:2;
 		rightAlign:2;
 		backgroundImage: Embed(source="assets/res/drawable-mdpi/sendMsgIcon.png");
+	}
+	
+	s|Button.loginButtonStyle
+	{
+		topAlign:2;
+		bottomAlign:2;
 	}
 	
 	s|Label.pageNameStyle
@@ -553,6 +566,12 @@ global
 		backgroundImage: Embed(source="assets/res/drawable-hdpi/sendMsgIcon.png");
 	}
 	
+	s|Button.loginButtonStyle
+	{
+		topAlign:3;
+		bottomAlign:3;
+	}
+	
 	s|Label.pageNameStyle
 	{
 		fontSize:27;
@@ -874,6 +893,12 @@ global
 		backgroundImage: Embed(source="assets/res/drawable-xhdpi/sendMsgIcon.png");
 	}
 	
+	s|Button.loginButtonStyle
+	{
+		topAlign:4;
+		bottomAlign:4;
+	}
+	
 	s|Label.pageNameStyle
 	{
 		fontSize:36;
@@ -1176,6 +1201,12 @@ global
 		bottomAlign:6;
 		rightAlign:6;
 		backgroundImage: Embed(source="assets/res/drawable-xxhdpi/sendMsgIcon.png");
+	}
+	
+	s|Button.loginButtonStyle
+	{
+		topAlign:6;
+		bottomAlign:6;
 	}
 	
 	s|Button.cameraSettingsStartButtonStyle

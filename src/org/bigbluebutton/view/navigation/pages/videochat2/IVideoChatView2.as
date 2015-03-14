@@ -19,6 +19,7 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 		function get noVideoMessage():Label
 		function getDisplayedUserID():String
 		function get videoGroup():Group
+		function get group():Group
 		function get streamlist():List
 	}
 }

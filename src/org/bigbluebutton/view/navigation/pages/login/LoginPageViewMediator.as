@@ -52,7 +52,7 @@ package org.bigbluebutton.view.navigation.pages.login
 			//loginService.unsuccessJoinedSignal.add(onUnsucess);
 			userUISession.unsuccessJoined.add(onUnsucess);
 
-			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent2);
+//			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent2);
 			userUISession.videoSignal.add(onInvokeEvent);
 			
 			userSession.logoutSignal.add(logout);

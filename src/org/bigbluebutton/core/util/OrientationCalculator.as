@@ -42,7 +42,7 @@ package org.bigbluebutton.core.util {
 				trace("Accelerometer not supported!!");
 			}
 			_root = root;
-			_root.stage.autoOrients = false;
+//			_root.stage.autoOrients = false;
 			
 			_checkTimer = new Timer(_checkFrequency, 0);
 			_checkTimer.addEventListener(TimerEvent.TIMER, checkOrientation);

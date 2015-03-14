@@ -6,6 +6,7 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 	import flash.display.Loader;
 	import flash.display.Shape;
 	import flash.display.SpreadMethod;
+	import flash.display.StageOrientation;
 	import flash.events.Event;
 	import flash.geom.*;
 	import flash.media.Video;
@@ -36,6 +37,7 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 			video.y = topActionBarHeight + (screenHeight - video.height)/2;
 			video.x = 0;
 			addLoadingImage();
+			
 			if(!this.stage.contains(_loader))
 			{
 				this.stage.addChild(_loader);

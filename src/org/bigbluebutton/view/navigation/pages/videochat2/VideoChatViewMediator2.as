@@ -215,6 +215,9 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 				if(view.getDisplayedUserID()==null)
 				{
 					checkVideo();
+				} else 
+				{
+					checkVideo(user);
 				}
 				
 				if(dataProvider.length==0)
@@ -256,7 +259,7 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 				var length:Number = Number(String(resolution.dimensions[1]));
 				if (view) 
 				{
-					view.startStream2(userSession.videoConnection.connection, name, streamName, resolution.userID, width, length, view.videoGroup.height/4, view.videoGroup.width/4);
+					view.startStream2(userSession.videoConnection.connection, name, streamName, resolution.userID, width, length, view.videoGroup.height/2, view.videoGroup.width/2);
 				}
 			}
 		}
@@ -296,61 +299,27 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 			if (changedUser)
 			{
 				// Priority state machine
-				if (changedUser.hasStream && changedUser.me)
+				if (changedUser.hasStream)
 				{
-					if (view) view.stopStream2();	
-					startStream2(changedUser.name, changedUser.streamName);
-				} 
-				else if (selectedUser && selectedUser.hasStream && changedUser.userID == selectedUser.userID)
-				{
-					if (view) view.stopStream();	
-					startStream(changedUser.name, changedUser.streamName);
-				}
-				else if (changedUser.presenter && changedUser.hasStream)
-				{
-					if (view) view.stopStream();	
-					startStream(changedUser.name, changedUser.streamName);
-				}
-				else if (currentUserID && changedUser.userID == currentUserID)
-				{
-					if (view) view.stopStream();	
-					startStream(changedUser.name, changedUser.streamName);
-				}
-				else if (userWithCamera)
-				{
-					if (userWithCamera.userID == changedUser.userID)
+					if (changedUser.me)
+					{
+						if (view) view.stopStream2();	
+						startStream2(changedUser.name, changedUser.streamName);
+					}
+					else
 					{
 						if (view) view.stopStream();	
 						startStream(changedUser.name, changedUser.streamName);
 					}
-					else if (!changedUser.hasStream && userWithCamera.me)
-					{
-						if (view) view.stopStream2();	
-						startStream2(userWithCamera.name, userWithCamera.streamName);
-					}
-				}
+				} 
 			}
 			else
 			{	
 				// Priority state machine
 				
-				// if user was directly selected, show this user as a first priority
-				if (selectedUser && selectedUser.hasStream)
-				{
-					newUser = selectedUser;
-				}
-					// if presenter is transmitting a video - put them in second priority
-				else if (presenter != null && presenter.hasStream)
+				if (presenter != null && presenter.hasStream)
 				{
 					newUser = presenter;
-				}
-					// current user is the third priority
-				else if (currentUserID != null) 
-				{
-					if (changedUser != null && currentUserID == changedUser.userID)
-					{
-						newUser = changedUser;
-					}
 				}
 					// any user with camera is the last priority
 				else if (userWithCamera != null)

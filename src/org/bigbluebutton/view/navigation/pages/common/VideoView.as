@@ -6,6 +6,7 @@ package org.bigbluebutton.view.navigation.pages.common
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
 	import flash.geom.Matrix;
+	import flash.display.StageOrientation;
 	
 	import spark.components.Group;
 	
@@ -33,6 +34,8 @@ package org.bigbluebutton.view.navigation.pages.common
 		public function VideoView():void
 		{
 			video = new Video();
+			
+//			this.stage.setAspectRatio(StageOrientation.ROTATED_RIGHT);
 		}	
 		
 		public function startStream(connection:NetConnection, name:String, streamName:String, userID:String, width0:Number, height0:Number, screenHeight0:Number=0, screenWidth0:Number=0, topMenuBarHeight0:Number=0, bottomMenuBarHeight0:Number=0):void

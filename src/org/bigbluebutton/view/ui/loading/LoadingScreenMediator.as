@@ -1,11 +1,14 @@
 package org.bigbluebutton.view.ui.loading
 {
 	import mx.core.FlexGlobals;
-	
-	import org.bigbluebutton.model.IUserUISession;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import org.osmf.logging.Log;
 	
 	import robotlegs.bender.bundles.mvcs.Mediator;
+	
+	import org.bigbluebutton.model.IUserUISession;
+	import org.bigbluebutton.view.navigation.pages.PagesENUM;
 	
 	public class LoadingScreenMediator extends Mediator
 	{
@@ -24,6 +27,7 @@ package org.bigbluebutton.view.ui.loading
 			
 //			view.setVisible(false);
 //			view.includeInLayout = false;
+			view.loginButton.addEventListener(MouseEvent.CLICK, doLogin);
 			
 			userUISettings.loadingSignal.add(update);
 		}
@@ -40,6 +44,12 @@ package org.bigbluebutton.view.ui.loading
 			view = null;
 			
 			userUISettings.loadingSignal.remove(update);
+		}
+		
+		private function doLogin(event:Event):void
+		{
+			update(false);
+			userUISettings.pushPage(PagesENUM.INTERVIEWS);
 		}
 		
 		/**

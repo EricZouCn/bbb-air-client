@@ -59,6 +59,11 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 			return videoGroup0;
 		}
 		
+		public function get group():Group
+		{
+			return group0;
+		}
+		
 		public function startStream2(connection:NetConnection, name:String, streamName:String, userID:String, width:Number, height:Number, screenHeight:Number, screenWidth:Number):void 
 		{
 			if (webcam2) stopStream2();
@@ -71,7 +76,7 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 			var topActionBarHeight : Number = FlexGlobals.topLevelApplication.topActionBar.height;
 			var bottomMenuHeight : Number = FlexGlobals.topLevelApplication.bottomMenu.height;
 			webcam2.startStream(connection, name, streamName, userID, width, height, screenHeight, screenWidth,topActionBarHeight, bottomMenuHeight);			
-			webcam2.setVideoPosition2(name, videoGroup.width, videoGroup.height, (webcam == null ? (videoGroup.width-webcam2.videoWidth) : webcam.videoWidth));
+			webcam2.setVideoPosition2(name, videoGroup.width, videoGroup.height, videoGroup.width-webcam2.videoWidth);
 		}
 		
 		public function stopStream2():void 
