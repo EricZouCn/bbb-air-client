@@ -20,6 +20,7 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 	import org.bigbluebutton.command.CameraQualitySignal;
 	import org.bigbluebutton.command.ShareCameraSignal;
 	import org.bigbluebutton.core.VideoConnection;
+	import org.bigbluebutton.command.ShareMicrophoneSignal;
 	
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
@@ -38,6 +39,9 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 		
 		[Inject]
 		public var shareCameraSignal: ShareCameraSignal;			
+		
+		[Inject]
+		public var shareMicrophoneSignal: ShareMicrophoneSignal;
 		
 		protected var dataProvider:ArrayCollection;
 		
@@ -95,6 +99,16 @@ package org.bigbluebutton.view.navigation.pages.videochat2
 			
 			userSession.videoConnection.selectedCameraQuality = VideoConnection.CAMERA_QUALITY_MEDIUM;	
 			shareCameraSignal.dispatch(!userSession.userList.me.hasStream, CameraPosition.FRONT);
+			
+			shareMic();
+		}
+		
+		private function shareMic():void
+		{
+			var audioOptions:Object = new Object();
+			audioOptions.shareMic = userSession.userList.me.voiceJoined = !userSession.userList.me.voiceJoined;
+			audioOptions.listenOnly = userSession.userList.me.listenOnly = false;
+			shareMicrophoneSignal.dispatch(audioOptions);			
 		}
 		
 		protected function getUserWithCamera():User
